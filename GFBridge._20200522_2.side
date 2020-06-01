@@ -1,0 +1,1146 @@
+{
+  "id": "2fb05650-e130-44b1-ad62-bd938c2379a7",
+  "version": "2.0",
+  "name": "GFBridge",
+  "url": "http://localhost",
+  "tests": [{
+    "id": "dab7b506-516d-4af5-ba2e-be6bdc6625a8",
+    "name": "TC0001_Login",
+    "commands": [{
+      "id": "015878a5-6aaa-4b6c-8486-c57a5e47dd3b",
+      "comment": "",
+      "command": "open",
+      "target": "/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8846d44a-475f-409b-8076-73364f07cc7e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1080",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa047f98-e7de-476e-b1ef-234191cc4f0a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log in",
+      "targets": [
+        ["linkText=Log in", "linkText"],
+        ["css=#logindisplay > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Log in')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOn')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7fd2654c-3929-4ada-b5bc-c63343029dc9",
+      "comment": "",
+      "command": "type",
+      "target": "id=Username",
+      "targets": [
+        ["id=Username", "id"],
+        ["name=Username", "name"],
+        ["css=#Username", "css:finder"],
+        ["xpath=//input[@id='Username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "${username}"
+    }, {
+      "id": "45df7d61-1f8a-4df8-b7db-0cdeadad9b62",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "${password}"
+    }, {
+      "id": "9cf6ab06-40b3-44f3-96c5-f5858b03409e",
+      "comment": "",
+      "command": "click",
+      "target": "id=RememberLogin",
+      "targets": [
+        ["id=RememberLogin", "id"],
+        ["name=RememberLogin", "name"],
+        ["css=#RememberLogin", "css:finder"],
+        ["xpath=//input[@id='RememberLogin']", "xpath:attributes"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "725be9c4-351d-4545-8cbb-c5304701cd88",
+      "comment": "",
+      "command": "click",
+      "target": "name=button",
+      "targets": [
+        ["name=button", "name"],
+        ["css=.btn-login", "css:finder"],
+        ["xpath=//button[@name='button']", "xpath:attributes"],
+        ["xpath=//div[6]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "736cbcd8-20d3-4504-bf02-a105fcc679af",
+    "name": "TC0002_Login_Success",
+    "commands": [{
+      "id": "cab09065-691e-44aa-9e43-b85b772e596a",
+      "comment": "",
+      "command": "store",
+      "target": "gfsu",
+      "targets": [],
+      "value": "username"
+    }, {
+      "id": "869e50f5-c5c4-40ab-a7bb-32214a3ac47e",
+      "comment": "",
+      "command": "store",
+      "target": "Global@123",
+      "targets": [],
+      "value": "password"
+    }, {
+      "id": "cfd24647-b7d3-470a-a488-7bcb8c159798",
+      "comment": "",
+      "command": "run",
+      "target": "TC0001_Login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2501d8b0-4db6-4d9a-959e-4d6b0be02e6a",
+      "comment": "Verify that Logout successfully",
+      "command": "verifyElementPresent",
+      "target": "id=enrichmentMenuId",
+      "targets": [
+        ["id=enrichmentMenuId", "id"],
+        ["linkText=Enrichment(2)", "linkText"],
+        ["css=#enrichmentMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Enrichment(2)')]", "xpath:link"],
+        ["xpath=//a[@id='enrichmentMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='enrichmentMenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Enrichment/Dashboard')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Enrichment(2)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "baf8d4c9-e795-4332-858c-c21516fc900c",
+    "name": "TC0004_Load_RDLC_Report",
+    "commands": [{
+      "id": "ade26da6-6292-4561-a7b1-d182e54069fa",
+      "comment": "",
+      "command": "run",
+      "target": "LGT0001_Logout",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cebd487b-6dd5-46eb-a3ce-fd47503e4a04",
+      "comment": "",
+      "command": "run",
+      "target": "TC0002_Login_Success",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a00e17c-2365-47fc-9ba4-883f520e50f4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Administration",
+      "targets": [
+        ["linkText=Administration", "linkText"],
+        ["css=#administrationMenu > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Administration')]", "xpath:link"],
+        ["xpath=//li[@id='administrationMenu']/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/bridge/en-US/Administration/ConnectionConfiguration')])[2]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Administration')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70ef3956-176f-4434-b52d-6c171c535c2f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=VBM templates",
+      "targets": [
+        ["linkText=VBM templates", "linkText"],
+        ["css=#vBMTemplatesSubSubmenu > a", "css:finder"],
+        ["xpath=//a[contains(text(),'VBM templates')]", "xpath:link"],
+        ["xpath=//li[@id='vBMTemplatesSubSubmenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Administration/VBMTemplates')]", "xpath:href"],
+        ["xpath=//div[3]/nav/ul/li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'VBM templates')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e97707e4-3aaf-4e17-9917-54925bc05415",
+      "comment": "Edit template \"4x7\" String",
+      "command": "click",
+      "target": "css=tr:nth-child(16) > td:nth-child(9) > a:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(16) > td:nth-child(9) > a:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Edit')])[16]", "xpath:link"],
+        ["xpath=//div[@id='main']/table/tbody/tr[16]/td[9]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Administration/VBMTemplates/EditTemplate/7792cb54-1b8a-488f-975a-b6851c0bc8fc')]", "xpath:href"],
+        ["xpath=//tr[16]/td[9]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "706ede3d-c948-4331-8514-f9c332adcde3",
+      "comment": "",
+      "command": "click",
+      "target": "id=ReportTemplateFile_ID",
+      "targets": [
+        ["id=ReportTemplateFile_ID", "id"],
+        ["name=ReportTemplateFile_ID", "name"],
+        ["css=#ReportTemplateFile_ID", "css:finder"],
+        ["xpath=//select[@id='ReportTemplateFile_ID']", "xpath:attributes"],
+        ["xpath=//form[@id='mainForm']/fieldset/div/div[2]/div[4]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/select", "xpath:position"],
+        ["xpath=//select[contains(.,'AU_Community_SureMedMaxUK_v1.0_1.0.46.0.dll (2018-08-31 16:18:18)\nBco.UkLabelReport.ProScript_1.0.131.0.dll (2018-02-19 10:40:31)\nBco.UkLabelReport.ProScript_1.0.8.0.dll (2018-02-13 10:17:43)\nBco.UkLabelReport_PaydensGroup_v1.2_1.1.6.0.dll (2018-12-10 10:49:48)\nBJRX_v4_SureMedPlusRdlc_1.4.27.0.dll (2018-01-31 13:41:51)\nBJRX_v4_SureMedPlusRdlc_1.4.27.0.dll (2018-01-31 13:43:22)\nCanadaSureMedRdlc_1.0.104.0.dll (2019-02-14 11:06:05)\nCanadaSureMedRdlc_1.0.116.0.dll (2018-07-13 11:15:05)\nCanadaSureMedRdlc_1.0.117.0.dll (2018-07-13 11:49:06)\nCanadaSureMedRdlc_1.0.296.0.dll (2020-05-06 09:51:17)\nCanadaSureMedRdlc_1.0.64.0.dll (2018-02-02 14:44:24)\nCanadaSureMedRdlc_1.0.78.0.dll (2018-04-23 14:42:18)\nCanadaSureMedRdlc_1.0.78.0.dll (2018-04-23 14:48:40)\nCVS_CA_Standard_SureMedPlusRdlc_1.0.147.0.dll (2020-05-21 15:23:22)\nDiagnosticBCOTemplate_1.0.169.0.dll (2018-06-28 09:46:20)\nDiagnosticBCOTemplate_1.0.171.0.dll (2018-06-28 09:54:55)\nDiagnosticBCOTemplate_1.0.207.0.dll (2018-06-28 10:29:36)\nDsMulReportRdlc_1.1.5.0.dll (2018-01-10 14:54:38)\nDsMulReportRdlc_1.2.195.0.dll (2018-03-05 10:40:40)\nDsMulReportRdlc_1.2.235.0 (3).dll (2018-07-03 15:24:26)\nDsMulReportRdlc_1.2.248.0.dll (2018-08-24 08:47:26)\nEco_Apothecary_SureMedPlusRdlc_1.0.65.0.dll (2018-03-08 12:24:01)\nECOPILLCardRdlc_1.0.46.0 (1).dll (2020-05-22 09:21:21)\nECOPILLCardRdlc_1.0.93.0.dll (2020-04-17 18:55:49)\nFlexRxCardRdlc_1.1.137.0.dll (2018-06-11 12:31:42)\nFlexRxCardRdlc_1.1.324.0.dll (2020-05-06 11:09:49)\nFlexRxCardRdlc_1.1.47.0.dll (2018-03-30 11:19:08)\nFlexRxCardRdlc_1.1.47.0.dll (2018-04-23 14:50:53)\nFlexRxCardRdlcShort_1.1.123.0.dll (2020-05-06 14:54:55)\nFlexRxFRQuebecCardRdlcP250_1.0.227.0.dll (2018-11-02 11:10:36)\nFlexRxFRQuebecCardRdlcP250_1.0.237.0.dll (2018-12-04 13:59:39)\nFlexRxFRQuebecCardRdlcP250_1.0.394.0.dll (2020-05-06 15:51:14)\nFlexRxQuebecCardRdlc_1.0.148.0.dll (2018-06-25 16:00:08)\nFlexRxQuebecCardRdlc_1.0.148.0.dll (2018-06-25 16:01:04)\nMail_Meds_SureMed_XL_RDLC_v2.01_1.0.3.0.dll (2018-07-19 15:35:40)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.202.0.dll (2018-08-10 10:11:42)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.391.0.dll (2018-08-13 13:52:57)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.391.0.dll (2018-08-13 14:01:41)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.411.0.dll (2018-08-21 17:33:37)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.420.0.dll (2018-08-23 12:23:00)\nMailMeds_XL_28Day_1.0.79.0.dll (2020-05-04 09:39:37)\nOxfordValley_Pace_v1.03_SureMedPlusRDLC_1.2.488.0.dll (2018-02-19 12:30:05)\nOxfordValley_v3.23_SureMedPlusRDLC_1.2.482.0.dll (2018-02-19 13:28:41)\nQuebecFRSureMedRdlc_1.0.14.0.dll (2018-01-19 13:58:34)\nQuebecSureMedRdlc_1.0.142.0.dll (2018-01-30 10:41:21)\nRDLC_MedsAlert_1.0.125.0.dll (2020-04-17 12:02:19)\nRDLC_MedsAlert_1.0.204.0.dll (2020-04-24 19:22:24)\nRDLC_MedsAlert_1.0.238.0.dll (2020-04-27 15:06:03)\nRDLC_MedsAlert_1.0.238.0.dll (2020-04-28 16:14:27)\nRDLC_MedsAlert_1.0.24.0.dll (2020-04-15 15:52:32)\nRDLC_PluriPharm_1.0.102.0.dll (2018-03-02 12:20:09)\nRDLC_PluriPharm_1.0.138.0.dll (2018-05-28 13:19:09)\nRDLC_ThioPharma_1.0.311.0 (1).dll (2018-06-25 14:26:17)\nRDLC_ThioPharma_1.0.360.0.dll (2018-06-05 14:49:44)\nRDLC_ThioPharma_1.0.361.0.dll (2018-06-05 15:16:42)\nRDLC_ThioPharma_1.0.362.0.dll (2018-06-05 15:24:29)\nRDLC_ThioPharma_1.0.363.0.dll (2018-06-05 15:32:37)\nRDLC_ThioPharma_1.0.56.0.dll (2018-07-13 14:08:57)\nRDLC_ThioPharma_1.0.57.0.dll (2018-07-13 14:33:05)\nRDLC_ThioPharma_1.0.61.0.dll (2018-07-31 17:31:51)\nSureMedDuoCard_1.0.187.0.dll (2018-11-07 15:14:08)\nSureMedDuoCard_1.0.263.0.dll (2018-11-27 15:22:15)\nSureMedDuoCard_1.0.375.0.dll (2018-12-18 11:29:55)\nSureMedDuoCardCommunity_1.0.357.0.dll (2018-12-13 12:16:43)\nSureMedDuoCardFacility_1.0.132.0.dll (2018-12-13 12:18:13)\nSureMedDuoCardFacility_1.0.161.0.dll (2018-12-18 11:33:45)\nSureMedDuoCardFacility_1.0.173.0.dll (2018-12-19 12:36:49)\nSureMedDuoCardFacility_1.0.174.0.dll (2018-12-19 14:10:08)\nSureMedDuoCardFacility_1.0.176.0.dll (2018-12-19 15:52:49)\nSureMedDuoCardFacility_1.0.177.0.dll (2018-12-19 16:08:26)\nSureMedDuoCardFacility_1.0.178.0.dll (2018-12-19 16:29:41)\nSureMedDuoCardFacility_1.0.179.0.dll (2018-12-19 16:52:16)\nSureMedDuoCardFacility_b1.0.68.0.dll (2018-12-18 17:14:24)\nSureMedDuoCardFacility_b1.0.69.0.dll (2018-12-18 17:23:12)\nSureMedDuoCardFacility_b1.0.70.0.dll (2018-12-18 17:53:25)\nSureMedDuoCardFacility_b1.0.71.0.dll (2018-12-18 18:04:00)\nSureMedDuoCardFacility_test1.0.168.0.dll (2018-12-19 11:23:18)\nSureMedDuoCardFacility_test1.0.169.0.dll (2018-12-19 11:34:23)\nSureMedDuoCardFacility_test1.0.172.0.dll (2018-12-19 12:21:51)\nSureMedPlusRdlc_1.2.68.0 (2).dll (2018-01-08 14:56:55)\nTatung_Taiwan_SureMedPlusRdlc_1.0.106.0.dll (2018-06-11 10:27:34)\nTatung_Taiwan_SureMedPlusRdlc_1.0.98.0.dll (2018-06-11 11:47:28)\nTemplate_Med_Alert_1.0.1.0.dll (2020-04-29 16:46:32)\nTemplate_Med_Alert_1.0.6.0.dll (2020-04-29 18:10:15)\nTemplate14_FlexRx_1.0.1.0.dll (2020-04-29 16:54:10)\nTemplate14_FlexRx_1.0.1.0.dll (2020-04-29 17:12:55)\nTemplate14_New_2_Med_Alert_1.0.1.0.dll (2020-05-04 16:11:28)\nTemplate14_New_Med_Alert_1.0.1.0.dll (2020-05-04 15:54:55)\nValidationCardRdlc_1.0.116.0.dll (2020-05-14 15:09:22)\nValidationCardRdlc_1.0.118.0.dll (2020-05-15 16:34:24)\nVitamines_1.0.202.0.dll (2018-08-20 10:50:44)\nVitamines_1.0.248.0.dll (2018-08-20 16:27:54)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f08bf8c-5b18-4b74-a63d-773bfe395293",
+      "comment": "Load ECOPILL RDLC report",
+      "command": "select",
+      "target": "id=ReportTemplateFile_ID",
+      "targets": [],
+      "value": "label=ECOPILLCardRdlc_1.0.93.0.dll (2020-04-17 18:55:49)"
+    }, {
+      "id": "e41bfcb3-40a8-4d14-a52d-54ca21f7d18d",
+      "comment": "",
+      "command": "click",
+      "target": "id=ReportTemplateFile_ID",
+      "targets": [
+        ["id=ReportTemplateFile_ID", "id"],
+        ["name=ReportTemplateFile_ID", "name"],
+        ["css=#ReportTemplateFile_ID", "css:finder"],
+        ["xpath=//select[@id='ReportTemplateFile_ID']", "xpath:attributes"],
+        ["xpath=//form[@id='mainForm']/fieldset/div/div[2]/div[4]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/select", "xpath:position"],
+        ["xpath=//select[contains(.,'AU_Community_SureMedMaxUK_v1.0_1.0.46.0.dll (2018-08-31 16:18:18)\nBco.UkLabelReport.ProScript_1.0.131.0.dll (2018-02-19 10:40:31)\nBco.UkLabelReport.ProScript_1.0.8.0.dll (2018-02-13 10:17:43)\nBco.UkLabelReport_PaydensGroup_v1.2_1.1.6.0.dll (2018-12-10 10:49:48)\nBJRX_v4_SureMedPlusRdlc_1.4.27.0.dll (2018-01-31 13:41:51)\nBJRX_v4_SureMedPlusRdlc_1.4.27.0.dll (2018-01-31 13:43:22)\nCanadaSureMedRdlc_1.0.104.0.dll (2019-02-14 11:06:05)\nCanadaSureMedRdlc_1.0.116.0.dll (2018-07-13 11:15:05)\nCanadaSureMedRdlc_1.0.117.0.dll (2018-07-13 11:49:06)\nCanadaSureMedRdlc_1.0.296.0.dll (2020-05-06 09:51:17)\nCanadaSureMedRdlc_1.0.64.0.dll (2018-02-02 14:44:24)\nCanadaSureMedRdlc_1.0.78.0.dll (2018-04-23 14:42:18)\nCanadaSureMedRdlc_1.0.78.0.dll (2018-04-23 14:48:40)\nCVS_CA_Standard_SureMedPlusRdlc_1.0.147.0.dll (2020-05-21 15:23:22)\nDiagnosticBCOTemplate_1.0.169.0.dll (2018-06-28 09:46:20)\nDiagnosticBCOTemplate_1.0.171.0.dll (2018-06-28 09:54:55)\nDiagnosticBCOTemplate_1.0.207.0.dll (2018-06-28 10:29:36)\nDsMulReportRdlc_1.1.5.0.dll (2018-01-10 14:54:38)\nDsMulReportRdlc_1.2.195.0.dll (2018-03-05 10:40:40)\nDsMulReportRdlc_1.2.235.0 (3).dll (2018-07-03 15:24:26)\nDsMulReportRdlc_1.2.248.0.dll (2018-08-24 08:47:26)\nEco_Apothecary_SureMedPlusRdlc_1.0.65.0.dll (2018-03-08 12:24:01)\nECOPILLCardRdlc_1.0.46.0 (1).dll (2020-05-22 09:21:21)\nECOPILLCardRdlc_1.0.93.0.dll (2020-04-17 18:55:49)\nFlexRxCardRdlc_1.1.137.0.dll (2018-06-11 12:31:42)\nFlexRxCardRdlc_1.1.324.0.dll (2020-05-06 11:09:49)\nFlexRxCardRdlc_1.1.47.0.dll (2018-03-30 11:19:08)\nFlexRxCardRdlc_1.1.47.0.dll (2018-04-23 14:50:53)\nFlexRxCardRdlcShort_1.1.123.0.dll (2020-05-06 14:54:55)\nFlexRxFRQuebecCardRdlcP250_1.0.227.0.dll (2018-11-02 11:10:36)\nFlexRxFRQuebecCardRdlcP250_1.0.237.0.dll (2018-12-04 13:59:39)\nFlexRxFRQuebecCardRdlcP250_1.0.394.0.dll (2020-05-06 15:51:14)\nFlexRxQuebecCardRdlc_1.0.148.0.dll (2018-06-25 16:00:08)\nFlexRxQuebecCardRdlc_1.0.148.0.dll (2018-06-25 16:01:04)\nMail_Meds_SureMed_XL_RDLC_v2.01_1.0.3.0.dll (2018-07-19 15:35:40)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.202.0.dll (2018-08-10 10:11:42)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.391.0.dll (2018-08-13 13:52:57)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.391.0.dll (2018-08-13 14:01:41)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.411.0.dll (2018-08-21 17:33:37)\nMail_Meds_SureMed_XL_RDLC_v2.03_1.0.420.0.dll (2018-08-23 12:23:00)\nMailMeds_XL_28Day_1.0.79.0.dll (2020-05-04 09:39:37)\nOxfordValley_Pace_v1.03_SureMedPlusRDLC_1.2.488.0.dll (2018-02-19 12:30:05)\nOxfordValley_v3.23_SureMedPlusRDLC_1.2.482.0.dll (2018-02-19 13:28:41)\nQuebecFRSureMedRdlc_1.0.14.0.dll (2018-01-19 13:58:34)\nQuebecSureMedRdlc_1.0.142.0.dll (2018-01-30 10:41:21)\nRDLC_MedsAlert_1.0.125.0.dll (2020-04-17 12:02:19)\nRDLC_MedsAlert_1.0.204.0.dll (2020-04-24 19:22:24)\nRDLC_MedsAlert_1.0.238.0.dll (2020-04-27 15:06:03)\nRDLC_MedsAlert_1.0.238.0.dll (2020-04-28 16:14:27)\nRDLC_MedsAlert_1.0.24.0.dll (2020-04-15 15:52:32)\nRDLC_PluriPharm_1.0.102.0.dll (2018-03-02 12:20:09)\nRDLC_PluriPharm_1.0.138.0.dll (2018-05-28 13:19:09)\nRDLC_ThioPharma_1.0.311.0 (1).dll (2018-06-25 14:26:17)\nRDLC_ThioPharma_1.0.360.0.dll (2018-06-05 14:49:44)\nRDLC_ThioPharma_1.0.361.0.dll (2018-06-05 15:16:42)\nRDLC_ThioPharma_1.0.362.0.dll (2018-06-05 15:24:29)\nRDLC_ThioPharma_1.0.363.0.dll (2018-06-05 15:32:37)\nRDLC_ThioPharma_1.0.56.0.dll (2018-07-13 14:08:57)\nRDLC_ThioPharma_1.0.57.0.dll (2018-07-13 14:33:05)\nRDLC_ThioPharma_1.0.61.0.dll (2018-07-31 17:31:51)\nSureMedDuoCard_1.0.187.0.dll (2018-11-07 15:14:08)\nSureMedDuoCard_1.0.263.0.dll (2018-11-27 15:22:15)\nSureMedDuoCard_1.0.375.0.dll (2018-12-18 11:29:55)\nSureMedDuoCardCommunity_1.0.357.0.dll (2018-12-13 12:16:43)\nSureMedDuoCardFacility_1.0.132.0.dll (2018-12-13 12:18:13)\nSureMedDuoCardFacility_1.0.161.0.dll (2018-12-18 11:33:45)\nSureMedDuoCardFacility_1.0.173.0.dll (2018-12-19 12:36:49)\nSureMedDuoCardFacility_1.0.174.0.dll (2018-12-19 14:10:08)\nSureMedDuoCardFacility_1.0.176.0.dll (2018-12-19 15:52:49)\nSureMedDuoCardFacility_1.0.177.0.dll (2018-12-19 16:08:26)\nSureMedDuoCardFacility_1.0.178.0.dll (2018-12-19 16:29:41)\nSureMedDuoCardFacility_1.0.179.0.dll (2018-12-19 16:52:16)\nSureMedDuoCardFacility_b1.0.68.0.dll (2018-12-18 17:14:24)\nSureMedDuoCardFacility_b1.0.69.0.dll (2018-12-18 17:23:12)\nSureMedDuoCardFacility_b1.0.70.0.dll (2018-12-18 17:53:25)\nSureMedDuoCardFacility_b1.0.71.0.dll (2018-12-18 18:04:00)\nSureMedDuoCardFacility_test1.0.168.0.dll (2018-12-19 11:23:18)\nSureMedDuoCardFacility_test1.0.169.0.dll (2018-12-19 11:34:23)\nSureMedDuoCardFacility_test1.0.172.0.dll (2018-12-19 12:21:51)\nSureMedPlusRdlc_1.2.68.0 (2).dll (2018-01-08 14:56:55)\nTatung_Taiwan_SureMedPlusRdlc_1.0.106.0.dll (2018-06-11 10:27:34)\nTatung_Taiwan_SureMedPlusRdlc_1.0.98.0.dll (2018-06-11 11:47:28)\nTemplate_Med_Alert_1.0.1.0.dll (2020-04-29 16:46:32)\nTemplate_Med_Alert_1.0.6.0.dll (2020-04-29 18:10:15)\nTemplate14_FlexRx_1.0.1.0.dll (2020-04-29 16:54:10)\nTemplate14_FlexRx_1.0.1.0.dll (2020-04-29 17:12:55)\nTemplate14_New_2_Med_Alert_1.0.1.0.dll (2020-05-04 16:11:28)\nTemplate14_New_Med_Alert_1.0.1.0.dll (2020-05-04 15:54:55)\nValidationCardRdlc_1.0.116.0.dll (2020-05-14 15:09:22)\nValidationCardRdlc_1.0.118.0.dll (2020-05-15 16:34:24)\nVitamines_1.0.202.0.dll (2018-08-20 10:50:44)\nVitamines_1.0.248.0.dll (2018-08-20 16:27:54)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "355b789c-c3e6-4932-8b21-06fae91379de",
+      "comment": "",
+      "command": "click",
+      "target": "css=fieldset:nth-child(21)",
+      "targets": [
+        ["css=fieldset:nth-child(21)", "css:finder"],
+        ["xpath=//form[@id='mainForm']/fieldset", "xpath:idRelative"],
+        ["xpath=//fieldset", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "478ee95b-fe1e-4b49-9bea-c3431e64f7b7",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn-submit",
+      "targets": [
+        ["id=btn-submit", "id"],
+        ["css=#btn-submit", "css:finder"],
+        ["xpath=//input[@id='btn-submit']", "xpath:attributes"],
+        ["xpath=//form[@id='mainForm']/p/input", "xpath:idRelative"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4bd593d0-4fcc-4bcb-abb0-0780f9f2b9f3",
+      "comment": "Verify Template save successfully",
+      "command": "//verifyElementPresent",
+      "target": "id=Result",
+      "targets": [],
+      "value": "success"
+    }]
+  }, {
+    "id": "6aee8b30-f509-4013-8041-610fbeef331a",
+    "name": "TC0005_Reproduce_a_Batch",
+    "commands": [{
+      "id": "64072e44-f196-4487-beef-204c2964a372",
+      "comment": "",
+      "command": "run",
+      "target": "TC0002_Login_Success",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae069102-023b-4ab2-877a-049a953c9eac",
+      "comment": "",
+      "command": "click",
+      "target": "id=productionMenuId",
+      "targets": [
+        ["id=productionMenuId", "id"],
+        ["linkText=Production(7)", "linkText"],
+        ["css=#productionMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Production(7)')]", "xpath:link"],
+        ["xpath=//a[@id='productionMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='productionMenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Production(7)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cfa6ea44-cceb-4283-b235-360e1d819ddb",
+      "comment": "",
+      "command": "click",
+      "target": "id=productionHistorySubMenuId",
+      "targets": [
+        ["id=productionHistorySubMenuId", "id"],
+        ["linkText=Production history", "linkText"],
+        ["css=#productionHistorySubMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Production history')]", "xpath:link"],
+        ["xpath=//a[@id='productionHistorySubMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='historySubmenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction/History?Length=13')]", "xpath:href"],
+        ["xpath=//div[5]/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Production history')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fdf2a82e-80eb-4993-b9fb-349de49f5f97",
+      "comment": "",
+      "command": "click",
+      "target": "id=chkSelect_c20a5aae-4737-49d7-9f07-c2a22c19fd11",
+      "targets": [
+        ["id=chkSelect_c20a5aae-4737-49d7-9f07-c2a22c19fd11", "id"],
+        ["css=#chkSelect_c20a5aae-4737-49d7-9f07-c2a22c19fd11", "css:finder"],
+        ["xpath=//input[@id='chkSelect_c20a5aae-4737-49d7-9f07-c2a22c19fd11']", "xpath:attributes"],
+        ["xpath=//tbody[@id='HistoryTableBody']/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b762dd09-7966-47fb-ab0f-12b4edd696a5",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnProduce",
+      "targets": [
+        ["id=btnProduce", "id"],
+        ["linkText=Reproduce", "linkText"],
+        ["css=#btnProduce", "css:finder"],
+        ["xpath=//a[contains(text(),'Reproduce')]", "xpath:link"],
+        ["xpath=//a[@id='btnProduce']", "xpath:attributes"],
+        ["xpath=//div[@id='commands']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction/ReproduceBatches?from=History')]", "xpath:href"],
+        ["xpath=//td/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Reproduce')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd3a082c-ec20-45ad-97b6-d57f1de67060",
+      "comment": "",
+      "command": "click",
+      "target": "id=checkAll",
+      "targets": [
+        ["id=checkAll", "id"],
+        ["css=#checkAll", "css:finder"],
+        ["xpath=//input[@id='checkAll']", "xpath:attributes"],
+        ["xpath=//table[@id='checkboxtable']/thead/tr/th/input", "xpath:idRelative"],
+        ["xpath=//th/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09d34a41-cfa6-4d08-95ae-a3688456ac20",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnReproduceSelected",
+      "targets": [
+        ["id=btnReproduceSelected", "id"],
+        ["linkText=Reproduce", "linkText"],
+        ["css=#btnReproduceSelected", "css:finder"],
+        ["xpath=//a[contains(text(),'Reproduce')]", "xpath:link"],
+        ["xpath=//a[@id='btnReproduceSelected']", "xpath:attributes"],
+        ["xpath=//form[@id='mainForm']/fieldset/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'javascript:void(0);')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Reproduce')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e9d8a9d1-5a77-49e3-8947-6138016764bb",
+      "comment": "",
+      "command": "click",
+      "target": "id=productionMenuId",
+      "targets": [
+        ["id=productionMenuId", "id"],
+        ["linkText=Production(7)", "linkText"],
+        ["css=#productionMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Production(7)')]", "xpath:link"],
+        ["xpath=//a[@id='productionMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='productionMenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Production(7)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5e3996a6-e8ae-4568-87b2-81d9837a109b",
+      "comment": "",
+      "command": "click",
+      "target": "id=chkSelect_de2f2254-bfe6-4080-a5e6-8427433e231d",
+      "targets": [
+        ["id=chkSelect_de2f2254-bfe6-4080-a5e6-8427433e231d", "id"],
+        ["css=#chkSelect_de2f2254-bfe6-4080-a5e6-8427433e231d", "css:finder"],
+        ["xpath=//input[@id='chkSelect_de2f2254-bfe6-4080-a5e6-8427433e231d']", "xpath:attributes"],
+        ["xpath=//form[@id='mainSearchForm']/table[2]/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5042da56-5ed7-47ea-b1e7-587eb30a01a0",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "xpath=//strong[contains(.,'Machine')]",
+      "targets": [
+        ["css=strong:nth-child(6)", "css:finder"],
+        ["xpath=//table[@id='AffixMassResend']/tbody/tr/td/div/strong[2]", "xpath:idRelative"],
+        ["xpath=//strong[2]", "xpath:position"],
+        ["xpath=//strong[contains(.,'Machine')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4bc7772-02cb-4ad4-819d-46647fe61cf1",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b009a624-c403-4807-a27a-0fac9c8af8d2",
+      "comment": "",
+      "command": "select",
+      "target": "id=SelectedVbmConnection",
+      "targets": [],
+      "value": "label=(41) vbm-api"
+    }, {
+      "id": "2e31a8f6-e8a5-41e2-ad42-f22e3e89caa0",
+      "comment": "",
+      "command": "click",
+      "target": "id=SelectedVbmConnection",
+      "targets": [
+        ["id=SelectedVbmConnection", "id"],
+        ["name=SelectedVbmConnection", "name"],
+        ["css=#SelectedVbmConnection", "css:finder"],
+        ["xpath=//select[@id='SelectedVbmConnection']", "xpath:attributes"],
+        ["xpath=//table[@id='AffixMassResend']/tbody/tr/td/div/select", "xpath:idRelative"],
+        ["xpath=//td/div/select", "xpath:position"],
+        ["xpath=//select[contains(.,'(41) vbm-api\n(14) api_dotnet')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a2f9b7e-5a93-476d-b408-a69902f927ee",
+      "comment": "",
+      "command": "click",
+      "target": "id=SelectedMachineId",
+      "targets": [
+        ["id=SelectedMachineId", "id"],
+        ["name=SelectedMachineId", "name"],
+        ["css=#SelectedMachineId", "css:finder"],
+        ["xpath=//select[@id='SelectedMachineId']", "xpath:attributes"],
+        ["xpath=//table[@id='AffixMassResend']/tbody/tr/td/div/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "788ed63b-7798-4379-b1b4-a423bed0d910",
+      "comment": "",
+      "command": "select",
+      "target": "id=SelectedMachineId",
+      "targets": [],
+      "value": "label=(1) BCO Workstation 10037 - 08641C2066C711E69823708BCD828B45"
+    }, {
+      "id": "b3084a84-0406-4192-95ef-ee72a4d127c1",
+      "comment": "",
+      "command": "click",
+      "target": "id=SelectedMachineId",
+      "targets": [
+        ["id=SelectedMachineId", "id"],
+        ["name=SelectedMachineId", "name"],
+        ["css=#SelectedMachineId", "css:finder"],
+        ["xpath=//select[@id='SelectedMachineId']", "xpath:attributes"],
+        ["xpath=//table[@id='AffixMassResend']/tbody/tr/td/div/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e83b3c87-159a-4a51-a52b-f01b84787d19",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnMassProduce",
+      "targets": [
+        ["id=btnMassProduce", "id"],
+        ["linkText=Produce", "linkText"],
+        ["css=#btnMassProduce", "css:finder"],
+        ["xpath=//a[contains(text(),'Produce')]", "xpath:link"],
+        ["xpath=//a[@id='btnMassProduce']", "xpath:attributes"],
+        ["xpath=//table[@id='AffixMassResend']/tbody/tr/td/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction/ProduceBatches?date=5%2F22%2F2020&creationdateto=5%2F22%2F2020&PageSize=40&SelectedVbmConnection=3dce5aef-a7f1-4d3d-af4f-74d136cab87d&SelectedMachineId=a822a9e7-65e9-4037-8afc-9dd7b02edd24')]", "xpath:href"],
+        ["xpath=//td/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Produce')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5702523f-00b9-49f8-8de3-9c5ec8be730d",
+      "comment": "",
+      "command": "click",
+      "target": "id=productionHistorySubMenuId",
+      "targets": [
+        ["id=productionHistorySubMenuId", "id"],
+        ["linkText=Production history", "linkText"],
+        ["css=#productionHistorySubMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Production history')]", "xpath:link"],
+        ["xpath=//a[@id='productionHistorySubMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='historySubmenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction/History?Length=13')]", "xpath:href"],
+        ["xpath=//div[5]/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Production history')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "07910ed5-9241-4ba8-af10-5f4258ca6deb",
+      "comment": "Verify that the Batch has been sync successfully",
+      "command": "verifyElementPresent",
+      "target": "xpath=//span[contains(.,'Sync success')]",
+      "targets": [
+        ["css=.batchStatus", "css:finder"],
+        ["xpath=//tbody[@id='HistoryTableBody']/tr/td[6]/span", "xpath:idRelative"],
+        ["xpath=//td[6]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Sync success')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd37cef6-ebf8-4fa5-affa-7df75cb5d981",
+      "comment": "",
+      "command": "//sendKeys",
+      "target": "id=Password",
+      "targets": [],
+      "value": "${KEY_ENTER}"
+    }]
+  }, {
+    "id": "4cf6046f-c93e-406a-9464-a7b5cdc956c4",
+    "name": "TC0003_Login_Invalid",
+    "commands": [{
+      "id": "d12db7b3-23ab-49e1-b4f5-9d7144d0da6f",
+      "comment": "",
+      "command": "store",
+      "target": "abc",
+      "targets": [],
+      "value": "username"
+    }, {
+      "id": "705794d7-8a59-4246-981e-cedbecd2b434",
+      "comment": "",
+      "command": "store",
+      "target": "blabla",
+      "targets": [],
+      "value": "password"
+    }, {
+      "id": "565a41d9-9c3b-41f1-a93d-7f749c7f8ae9",
+      "comment": "",
+      "command": "run",
+      "target": "TC0001_Login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb6a028e-e408-4ebd-a012-02cc2c767883",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=ul:nth-child(1) > li",
+      "targets": [
+        ["css=ul:nth-child(1) > li", "css:finder"],
+        ["xpath=//td/div/div/ul/li", "xpath:position"],
+        ["xpath=//li[contains(.,'Invalid username or password')]", "xpath:innerText"]
+      ],
+      "value": "Invalid username or password"
+    }]
+  }, {
+    "id": "7cdf8d1c-f673-4e5c-aa77-29243b332957",
+    "name": "TC_0006_Reproduce",
+    "commands": [{
+      "id": "995e6a10-5e28-47fc-a37b-434de1e9053d",
+      "comment": "",
+      "command": "run",
+      "target": "TC0002_Login_Success",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed9a537d-8164-4386-86f3-bf962f2271aa",
+      "comment": "",
+      "command": "click",
+      "target": "id=productionMenuId",
+      "targets": [
+        ["id=productionMenuId", "id"],
+        ["linkText=Production(10)", "linkText"],
+        ["css=#productionMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Production(10)')]", "xpath:link"],
+        ["xpath=//a[@id='productionMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='productionMenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Production(10)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "59445d29-8cd7-47a7-a8b9-9a73675bd5b2",
+      "comment": "",
+      "command": "click",
+      "target": "id=productionHistorySubMenuId",
+      "targets": [
+        ["id=productionHistorySubMenuId", "id"],
+        ["linkText=Production history", "linkText"],
+        ["css=#productionHistorySubMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Production history')]", "xpath:link"],
+        ["xpath=//a[@id='productionHistorySubMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='historySubmenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction/History?Length=13')]", "xpath:href"],
+        ["xpath=//div[5]/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Production history')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d128cf26-b915-49fe-ba4e-cd4d55c3c972",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "No machine is selected. Do you want to continue to produce batch without selecting machine?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6e56efea-44a7-48ed-8e3c-fac028d640a4",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bec4a432-a7e6-4896-b5e4-32f46b6b9d9e",
+      "comment": "",
+      "command": "click",
+      "target": "id=productionHistorySubMenuId",
+      "targets": [
+        ["id=productionHistorySubMenuId", "id"],
+        ["linkText=Production history", "linkText"],
+        ["css=#productionHistorySubMenuId", "css:finder"],
+        ["xpath=//a[contains(text(),'Production history')]", "xpath:link"],
+        ["xpath=//a[@id='productionHistorySubMenuId']", "xpath:attributes"],
+        ["xpath=//li[@id='historySubmenu']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/en-US/Production/TPMProduction/History?Length=13')]", "xpath:href"],
+        ["xpath=//div[5]/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Production history')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "31f21770-e8fd-4d04-ac5d-eeb88581cbd2",
+      "comment": "",
+      "command": "",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b1049fbe-4c7f-468c-a886-52d65d4d84a3",
+      "comment": "",
+      "command": "//chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a2ca5593-ba2a-4e7d-be6a-74d5d1640048",
+      "comment": "Verify status is Sync success",
+      "command": "verifyElementPresent",
+      "target": "xpath=//div[@id='block-2']/div[2]",
+      "targets": [
+        ["css=#block-2 > .display-field:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='block-2']/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b521707c-3d63-41a4-8c57-0e094b080501",
+    "name": "TC0007_Produce_a_Batch",
+    "commands": [{
+      "id": "ed336ab9-4042-4bc3-9d19-878fb956b91f",
+      "comment": "",
+      "command": "run",
+      "target": "TC0002_Login_Success",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "10156de9-7aff-43d9-867b-40b9047b52f4",
+    "name": "Temp_If_Condition",
+    "commands": [{
+      "id": "5287ab74-ab41-4ff3-9ced-dae66b1389d8",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return \"b\"",
+      "targets": [],
+      "value": "myVar"
+    }, {
+      "id": "5431441b-b9fb-43fe-bcef-5a2a1f5515b4",
+      "comment": "",
+      "command": "if",
+      "target": "${myVar} === \"a\"",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ecb8f6a2-11f4-49a9-8db8-e94dd8cd0167",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return \"a\"",
+      "targets": [],
+      "value": "Output"
+    }, {
+      "id": "c69a0ecb-69d6-4e28-bc87-879a66b5928f",
+      "comment": "",
+      "command": "elseIf",
+      "target": "${myVar} === \"b\"",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e41023bc-6b6a-4a57-a64b-ca753e3e6191",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return \"b\"",
+      "targets": [],
+      "value": "Output"
+    }, {
+      "id": "c00e91c1-d47b-46e4-aed0-344422aa4d28",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "94f66bc8-c479-4ee3-b060-402662073574",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return \"c\"",
+      "targets": [],
+      "value": "Output"
+    }, {
+      "id": "3cc99223-faca-415a-86cc-a7667cab8b97",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "11887520-ff13-407a-ae6f-103b4f1e6a19",
+      "comment": "",
+      "command": "assert",
+      "target": "Output",
+      "targets": [],
+      "value": "b"
+    }]
+  }, {
+    "id": "cb051143-6c89-43f0-a2a9-6f464a8dc5ef",
+    "name": "temp2",
+    "commands": [{
+      "id": "27ec42ad-6c73-42a6-97b7-3f2e8e100e56",
+      "comment": "",
+      "command": "open",
+      "target": "/bridge",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0922c50d-b03e-4636-8472-b352ebcb8965",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "891x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b8a00cea-8796-462a-abf7-d70276acc281",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=.",
+      "targets": [
+        ["linkText=.", "linkText"],
+        ["css=.glyphicon-log-out", "css:finder"],
+        ["xpath=//a[contains(text(),'.')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOff')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c35b8eb1-39f0-432b-9a14-b106f6b0ec04",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log in",
+      "targets": [
+        ["linkText=Log in", "linkText"],
+        ["css=#logindisplay > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Log in')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOn')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c50cbd7-594e-4b9d-8ee4-8cdae9a2409f",
+      "comment": "",
+      "command": "click",
+      "target": "id=Username",
+      "targets": [
+        ["id=Username", "id"],
+        ["name=Username", "name"],
+        ["css=#Username", "css:finder"],
+        ["xpath=//input[@id='Username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c32c9851-374b-43e7-a73a-56d0e162b3a0",
+      "comment": "",
+      "command": "type",
+      "target": "id=Username",
+      "targets": [
+        ["id=Username", "id"],
+        ["name=Username", "name"],
+        ["css=#Username", "css:finder"],
+        ["xpath=//input[@id='Username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "gfsu"
+    }, {
+      "id": "dab086d3-7722-4758-a7ae-cdfa9e54383f",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "Global@123"
+    }, {
+      "id": "b34e446c-c02f-4b94-beee-5eef7c5c05f9",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }, {
+    "id": "cd44e1d6-36de-4a4a-b48c-95881f419692",
+    "name": "CH0001_Check_and_Logout",
+    "commands": [{
+      "id": "2fc303fd-3f26-4a85-a54c-82c25817d985",
+      "comment": "",
+      "command": "open",
+      "target": "/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7df08686-681c-4214-aacf-e4b1c25b1aea",
+      "comment": "",
+      "command": "eyesCheckWindow",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ecd2f67c-cb63-49ab-8766-5b9c2976a476",
+      "comment": "",
+      "command": "storeText",
+      "target": "linkText=.",
+      "targets": [
+        ["linkText=.", "linkText"],
+        ["css=.glyphicon-log-out", "css:finder"],
+        ["xpath=//a[contains(text(),'.')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOff')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'.')]", "xpath:innerText"]
+      ],
+      "value": "CheckLogOff"
+    }, {
+      "id": "63102f97-ca66-4894-ace6-ec466d9c167c",
+      "comment": "",
+      "command": "if",
+      "target": "${CheckLogOff}",
+      "targets": [],
+      "value": "LogOff"
+    }, {
+      "id": "ef63df98-82a6-478c-a78a-40ce173c7892",
+      "comment": "Do LogOut",
+      "command": "click",
+      "target": "linkText=.",
+      "targets": [
+        ["linkText=.", "linkText"],
+        ["css=.glyphicon-log-out", "css:finder"],
+        ["xpath=//a[contains(text(),'.')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOff')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "33e41b0e-4db8-4114-8bb2-e97b7488e53e",
+      "comment": "Refresh page Login",
+      "command": "open",
+      "target": "http://localhost/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a0866237-a840-4afd-86f7-e4988bd668e7",
+      "comment": "",
+      "command": "//eyesCheckElement",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f310ddcc-a7b7-46cd-b264-8ef464aec84f",
+      "comment": "",
+      "command": "//else",
+      "target": "${CheckLogIn}",
+      "targets": [],
+      "value": "Log in"
+    }, {
+      "id": "53f10eea-58fe-4d02-8d28-4e725c515281",
+      "comment": "",
+      "command": "//storeText",
+      "target": "linkText=Log in",
+      "targets": [],
+      "value": "CheckLogIn"
+    }, {
+      "id": "caa94154-5400-424e-8f01-efbbd393faa8",
+      "comment": "",
+      "command": "//if",
+      "target": "CheckLogIn",
+      "targets": [],
+      "value": "Log in"
+    }, {
+      "id": "4f52d70f-5674-4403-85d7-b238703d11af",
+      "comment": "",
+      "command": "//open",
+      "target": "http://localhost/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "27decfc1-3ca0-4bf4-9f9f-d0bb14d0ff5c",
+      "comment": "",
+      "command": "//end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b94a5c4d-5716-40d0-9c68-4f7a355e56b1",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "146b686b-13df-4318-9b37-f88c5a0a52af",
+      "comment": "Refresh page",
+      "command": "open",
+      "target": "http://localhost/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8841ba84-6788-47e5-bb9c-394bd8c021c9",
+      "comment": "",
+      "command": "",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ba5b2317-6e29-4481-b9d6-166a067a957f",
+    "name": "LGT0001_Logout",
+    "commands": [{
+      "id": "c3c6619e-70a2-4669-86af-387559551d1c",
+      "comment": "",
+      "command": "open",
+      "target": "/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b9045420-2aae-4189-a3f4-046c3cdd38e3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=.",
+      "targets": [
+        ["linkText=.", "linkText"],
+        ["css=.glyphicon-log-out", "css:finder"],
+        ["xpath=//a[contains(text(),'.')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOff')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "34681c8b-fcb3-46bf-bcba-dada21a5842f",
+      "comment": "Verify that Logout successfully",
+      "command": "verifyElementPresent",
+      "target": "xpath=//a[contains(text(),'Log in')]",
+      "targets": [
+        ["linkText=Log in", "linkText"],
+        ["css=#logindisplay > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Log in')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOn')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fb50cf98-9547-4d71-a360-5275c53f378f",
+    "name": "CH0001_Logout_and_Login (1)",
+    "commands": [{
+      "id": "8ebceb03-556c-453d-89f2-9525bb998460",
+      "comment": "",
+      "command": "open",
+      "target": "/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5fb70ec0-1cb5-402c-a8c2-bf2a55182856",
+      "comment": "",
+      "command": "check",
+      "target": "linkText=.",
+      "targets": [],
+      "value": "CheckLogOff"
+    }, {
+      "id": "4d42f90c-09b4-4d68-8963-f781416f5476",
+      "comment": "",
+      "command": "if",
+      "target": "${CheckLogOff}",
+      "targets": [],
+      "value": "LogOff"
+    }, {
+      "id": "19277675-6d08-4b46-90e1-11e2d3bc74f3",
+      "comment": "Do LogOut",
+      "command": "click",
+      "target": "xpath=//a[contains(@href, '/bridge/Account/LogOff')]",
+      "targets": [
+        ["linkText=.", "linkText"],
+        ["css=.glyphicon-log-out", "css:finder"],
+        ["xpath=//a[contains(text(),'.')]", "xpath:link"],
+        ["xpath=//div[@id='logindisplay']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/bridge/Account/LogOff')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d72de204-2fdf-4561-a959-a4de28b93279",
+      "comment": "Refresh page Login",
+      "command": "open",
+      "target": "http://localhost/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d6ab7e9-5cb6-4863-9f3f-432921e1653d",
+      "comment": "",
+      "command": "else",
+      "target": "${CheckLogIn}",
+      "targets": [],
+      "value": "Log in"
+    }, {
+      "id": "763ca4ba-ccc4-419c-9927-d37a11d5f042",
+      "comment": "",
+      "command": "//storeText",
+      "target": "linkText=Log in",
+      "targets": [],
+      "value": "CheckLogIn"
+    }, {
+      "id": "e7929fe2-3003-4ef2-939e-7b2129c98ef4",
+      "comment": "",
+      "command": "if",
+      "target": "CheckLogIn",
+      "targets": [],
+      "value": "Log in"
+    }, {
+      "id": "b7a9387b-147a-4e0c-a7c5-69c830115313",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/bridge/en-US",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5dc3ed38-e918-4205-b6ea-5d20717219a6",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "84845a81-05a4-4ec5-af8f-a0b9146fbe6f",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "250771fe-df88-4bb6-9501-b10354b7cf4d",
+    "name": "Login_Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["dab7b506-516d-4af5-ba2e-be6bdc6625a8", "736cbcd8-20d3-4504-bf02-a105fcc679af", "4cf6046f-c93e-406a-9464-a7b5cdc956c4"]
+  }, {
+    "id": "52637846-e929-4b94-bead-d04e760a8b4f",
+    "name": "Load report_Produce_Batch",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["baf8d4c9-e795-4332-858c-c21516fc900c", "6aee8b30-f509-4013-8041-610fbeef331a"]
+  }, {
+    "id": "28b3b80f-636f-4eea-b66f-1491d062779f",
+    "name": "Produce_Batch",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["7cdf8d1c-f673-4e5c-aa77-29243b332957", "b521707c-3d63-41a4-8c57-0e094b080501", "6aee8b30-f509-4013-8041-610fbeef331a"]
+  }],
+  "urls": ["http://localhost/"],
+  "plugins": [{
+    "id": "fbnkflkahhlmhdgkddaafgnnokifobik",
+    "name": "Applitools",
+    "version": "1.0.0"
+  }],
+  "snapshot": {
+    "globalConfig": {
+      "snapshot": "const { Eyes, Target } = require('@applitools/eyes-selenium');global.Target = Target;const { ConsoleLogHandler, BatchInfo } = require('@applitools/eyes-sdk-core');let apiKey = process.env.APPLITOOLS_API_KEY, serverUrl = process.env.APPLITOOLS_SERVER_URL, appName = \"GFBridge\", batchId = configuration.runId, batchName;"
+    },
+    "tests": [{
+      "id": "cd44e1d6-36de-4a4a-b48c-95881f419692",
+      "snapshot": {
+        "commands": {
+          "7df08686-681c-4214-aacf-e4b1c25b1aea": "if (!opts.isNested) {await eyes.check(\"\" || (new URL(await driver.getCurrentUrl())).pathname, Target.window().webHook(preRenderHook).accessibilityValidation(configuration.params.eyesAccessibilityLevel || \"None\").fully(true));}"
+        },
+        "setupHooks": ["const _driver = driver;driver = await eyes.open(driver, appName, \"CH0001_Check_and_Logout\");global.preRenderHook = \"\";"],
+        "teardownHooks": ["driver = _driver;"]
+      }
+    }]
+  },
+  "dependencies": {
+    "@applitools/eyes-selenium": "4.33.8"
+  },
+  "jest": {
+    "extraGlobals": ["Math"]
+  }
+}
