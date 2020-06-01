@@ -732,7 +732,7 @@
       "value": ""
     }, {
       "id": "11887520-ff13-407a-ae6f-103b4f1e6a19",
-      "comment": "",
+      "comment": "Verify the output must be equal to b",
       "command": "assert",
       "target": "Output",
       "targets": [],
